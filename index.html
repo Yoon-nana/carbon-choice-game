@@ -1375,6 +1375,7 @@ html&gt;body{padding:0}&lt;/style&gt;
       let chosen = {};
       let carbon = 0;
       let simVisible = false;
+      let seaAnimationTimer = null;
 
       function selectedCount() {
         return Object.keys(chosen).length;
@@ -1567,10 +1568,9 @@ html&gt;body{padding:0}&lt;/style&gt;
         }
       }
 
-      function updateSeaLevel(score) {
+      function setSeaLevelVisual(score) {
         const risePx = Math.round(score / 12 * 110);
         const surfaceY = 270 - risePx;
-        seaScore.textContent = score + &#x27;/12&#x27;;
         seaValue.textContent = score + &#x27;/12칸&#x27;;
         ocean.setAttribute(&#x27;y&#x27;, String(surfaceY));
         ocean.setAttribute(&#x27;height&#x27;, String(360 - surfaceY));
@@ -1583,6 +1583,27 @@ html&gt;body{padding:0}&lt;/style&gt;
         window.setTimeout(() =&gt; {
           seaWave.style.transform = &#x27;translateY(2px)&#x27;;
         }, 80);
+      }
+
+      function updateSeaLevel(score, animate = false) {
+        seaScore.textContent = score + &#x27;/12&#x27;;
+        if (seaAnimationTimer) window.clearTimeout(seaAnimationTimer);
+        if (!animate) {
+          setSeaLevelVisual(score);
+          return;
+        }
+        ocean.style.transition = &#x27;none&#x27;;
+        seaLine.style.transition = &#x27;none&#x27;;
+        seaWave.style.transition = &#x27;none&#x27;;
+        setSeaLevelVisual(0);
+        void ocean.getBoundingClientRect();
+        seaAnimationTimer = window.setTimeout(() =&gt; {
+          ocean.style.transition = &#x27;&#x27;;
+          seaLine.style.transition = &#x27;&#x27;;
+          seaWave.style.transition = &#x27;&#x27;;
+          setSeaLevelVisual(score);
+          seaAnimationTimer = null;
+        }, 90);
       }
 
       choices.forEach((button) =&gt; {
@@ -1617,7 +1638,7 @@ html&gt;body{padding:0}&lt;/style&gt;
 
       showSea.addEventListener(&#x27;click&#x27;, () =&gt; {
         seaLevel.hidden = false;
-        updateSeaLevel(carbon);
+        updateSeaLevel(carbon, true);
         updateFlow(4);
         window.setTimeout(() =&gt; seaLevel.scrollIntoView({ behavior: &#x27;smooth&#x27;, block: &#x27;start&#x27; }), 40);
       });
@@ -1642,7 +1663,7 @@ html&gt;body{padding:0}&lt;/style&gt;
         }
       }));
       seaReplay.addEventListener(&#x27;click&#x27;, () =&gt; {
-        if (!seaLevel.hidden) updateSeaLevel(carbon);
+        if (!seaLevel.hidden) updateSeaLevel(carbon, true);
       });
       updateSelection();
       renderSolarPhotons();
