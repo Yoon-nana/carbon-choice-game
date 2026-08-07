@@ -886,16 +886,17 @@ html&gt;body{padding:0}&lt;/style&gt;
 &lt;body&gt;
 &lt;style&gt;
   #climate-chain-game {
-    --ccg-bg: var(--background, #fff9ef);
-    --ccg-surface: var(--card, #ffffff);
-    --ccg-fg: var(--foreground, #243248);
-    --ccg-muted: var(--muted-foreground, #687386);
-    --ccg-border: var(--border, #eadfcf);
-    --ccg-orange: var(--viz-series-1, #ef704d);
-    --ccg-yellow: var(--viz-series-4, #e9b83f);
-    --ccg-green: var(--viz-series-2, #4e9f75);
-    --ccg-blue: var(--viz-series-3, #4d9ed8);
-    --ccg-red: #dc735f;
+    color-scheme: light;
+    --ccg-bg: #fffbe6;
+    --ccg-surface: #fffef6;
+    --ccg-fg: #4d4a2f;
+    --ccg-muted: #7f7a58;
+    --ccg-border: #eadf9d;
+    --ccg-orange: #d3a52f;
+    --ccg-yellow: #f3d46b;
+    --ccg-green: #7eaa78;
+    --ccg-blue: #91c7d2;
+    --ccg-red: #c48b35;
     --ccg-ink: #000000;
     color: var(--ccg-fg);
     font-family: &quot;Arial Rounded MT Bold&quot;, &quot;Trebuchet MS&quot;, system-ui, -apple-system, sans-serif;
@@ -915,6 +916,13 @@ html&gt;body{padding:0}&lt;/style&gt;
   #climate-chain-game .ccg-flow-step { padding: 7px 11px; border: 2px solid var(--ccg-border); border-radius: 999px; background: var(--ccg-surface); }
   #climate-chain-game .ccg-flow-step.is-active { color: var(--ccg-orange); border-color: var(--ccg-orange); background: color-mix(in srgb, var(--ccg-orange) 10%, var(--ccg-surface)); font-weight: 500; }
   #climate-chain-game .ccg-flow-arrow { color: var(--ccg-orange); font-size: 16px; }
+  #climate-chain-game .ccg-learn-card { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: start; margin: 13px 0 18px; padding: 15px 17px; border: 2px solid color-mix(in srgb, var(--ccg-yellow) 55%, var(--ccg-border)); border-radius: 22px; background: color-mix(in srgb, var(--ccg-yellow) 23%, var(--ccg-surface)); }
+  #climate-chain-game .ccg-learn-icon { display: inline-flex; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: 50%; background: var(--ccg-yellow); font-size: 23px; }
+  #climate-chain-game .ccg-learn-card h3 { margin: 1px 0 4px; font-size: 16px; font-weight: 500; }
+  #climate-chain-game .ccg-learn-card p { margin: 0; color: var(--ccg-muted); font-size: 12px; }
+  #climate-chain-game .ccg-chain { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 10px; color: var(--ccg-muted); font-size: 11px; }
+  #climate-chain-game .ccg-chain span { padding: 5px 8px; border: 1px solid color-mix(in srgb, var(--ccg-border) 80%, transparent); border-radius: 999px; color: var(--ccg-ink); background: color-mix(in srgb, var(--ccg-surface) 75%, var(--ccg-yellow)); }
+  #climate-chain-game .ccg-chain strong { color: var(--ccg-orange); font-size: 14px; font-weight: 500; }
   #climate-chain-game .ccg-planner-head { display: flex; justify-content: space-between; gap: 14px; align-items: end; margin-bottom: 12px; }
   #climate-chain-game .ccg-planner-head p { margin: 0; color: var(--ccg-muted); font-size: 13px; }
   #climate-chain-game .ccg-picked { color: var(--ccg-green); font-size: 12px; font-weight: 500; white-space: nowrap; }
@@ -954,6 +962,9 @@ html&gt;body{padding:0}&lt;/style&gt;
   #climate-chain-game .ccg-score { color: var(--ccg-orange); font-size: 29px; font-weight: 500; }
   #climate-chain-game .ccg-score-bar { height: 9px; margin-top: 10px; overflow: hidden; border-radius: 99px; background: color-mix(in srgb, var(--ccg-border) 72%, transparent); }
   #climate-chain-game .ccg-score-fill { width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--ccg-green), var(--ccg-orange)); transition: width .65s ease; }
+  #climate-chain-game .ccg-result-breakdown { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+  #climate-chain-game .ccg-result-breakdown div { display: flex; justify-content: space-between; gap: 8px; padding: 8px 10px; border: 1px solid var(--ccg-border); border-radius: 14px; background: color-mix(in srgb, var(--ccg-surface) 82%, var(--ccg-yellow)); font-size: 11px; }
+  #climate-chain-game .ccg-result-breakdown strong { color: var(--ccg-ink); font-size: 12px; font-weight: 500; }
   #climate-chain-game .ccg-result-message { margin: 10px 0 0; color: var(--ccg-muted); font-size: 13px; }
   #climate-chain-game .ccg-simulation { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--ccg-border); }
   #climate-chain-game .ccg-sim-intro { display: flex; justify-content: space-between; gap: 18px; align-items: end; margin-bottom: 12px; }
@@ -1045,6 +1056,8 @@ html&gt;body{padding:0}&lt;/style&gt;
     #climate-chain-game .ccg-planner-head, #climate-chain-game .ccg-sim-intro, #climate-chain-game .ccg-sea-intro { display: block; }
     #climate-chain-game .ccg-picked { display: inline-block; margin-top: 5px; }
     #climate-chain-game .ccg-observe-panel { grid-template-columns: 1fr 1fr; }
+    #climate-chain-game .ccg-result-breakdown { grid-template-columns: 1fr; }
+    #climate-chain-game .ccg-learn-card { grid-template-columns: 1fr; }
     #climate-chain-game .ccg-measure:last-of-type { grid-column: 1 / -1; }
     #climate-chain-game .ccg-legend { grid-template-columns: 1fr; }
   }
@@ -1070,6 +1083,17 @@ html&gt;body{padding:0}&lt;/style&gt;
       &lt;span class=&quot;ccg-flow-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;
       &lt;span class=&quot;ccg-flow-step&quot; id=&quot;ccg-flow-four&quot;&gt;4 해수면 상승&lt;/span&gt;
     &lt;/div&gt;
+
+    &lt;section class=&quot;ccg-learn-card&quot; aria-labelledby=&quot;ccg-learn-title&quot;&gt;
+      &lt;div class=&quot;ccg-learn-icon&quot; aria-hidden=&quot;true&quot;&gt;🐾&lt;/div&gt;
+      &lt;div&gt;
+        &lt;h3 id=&quot;ccg-learn-title&quot;&gt;탄소발자국이 뭐예요?&lt;/h3&gt;
+        &lt;p&gt;우리가 이동하고, 먹고, 전기와 물을 쓰고, 쓰레기를 버릴 때 CO₂가 나와요. 그 흔적을 탄소발자국이라고 해요.&lt;/p&gt;
+        &lt;div class=&quot;ccg-chain&quot; aria-label=&quot;생활 속 행동이 기후에 미치는 흐름&quot;&gt;
+          &lt;span&gt;생활 속 행동&lt;/span&gt;&lt;strong&gt;→&lt;/strong&gt;&lt;span&gt;CO₂가 나와요&lt;/span&gt;&lt;strong&gt;→&lt;/strong&gt;&lt;span&gt;지구가 따뜻해져요 🌡&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
 
     &lt;section id=&quot;ccg-planner&quot; aria-labelledby=&quot;ccg-planner-title&quot;&gt;
       &lt;div class=&quot;ccg-planner-head&quot;&gt;
@@ -1160,6 +1184,11 @@ html&gt;body{padding:0}&lt;/style&gt;
     &lt;section class=&quot;ccg-result&quot; id=&quot;ccg-result&quot; hidden aria-live=&quot;polite&quot;&gt;
       &lt;div class=&quot;ccg-result-line&quot;&gt;&lt;strong&gt;오늘의 탄소발자국&lt;/strong&gt;&lt;span class=&quot;ccg-score&quot; id=&quot;ccg-score&quot;&gt;0&lt;/span&gt;&lt;span&gt;/ 12&lt;/span&gt;&lt;/div&gt;
       &lt;div class=&quot;ccg-score-bar&quot; aria-hidden=&quot;true&quot;&gt;&lt;div class=&quot;ccg-score-fill&quot; id=&quot;ccg-score-fill&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;ccg-result-breakdown&quot; aria-label=&quot;시간대별 탄소발자국&quot;&gt;
+        &lt;div&gt;&lt;span&gt;☀ 아침&lt;/span&gt;&lt;strong id=&quot;ccg-morning-score&quot;&gt;0/4&lt;/strong&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;span&gt;◐ 점심&lt;/span&gt;&lt;strong id=&quot;ccg-lunch-score&quot;&gt;0/4&lt;/strong&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;span&gt;☾ 저녁&lt;/span&gt;&lt;strong id=&quot;ccg-evening-score&quot;&gt;0/4&lt;/strong&gt;&lt;/div&gt;
+      &lt;/div&gt;
       &lt;p class=&quot;ccg-result-message&quot; id=&quot;ccg-result-message&quot;&gt;&lt;/p&gt;
       &lt;div class=&quot;ccg-action-row&quot;&gt;
         &lt;button class=&quot;ccg-btn primary&quot; id=&quot;ccg-show-sim&quot; type=&quot;button&quot;&gt;🔍 온실 효과 관찰하기 →&lt;/button&gt;
@@ -1309,6 +1338,11 @@ html&gt;body{padding:0}&lt;/style&gt;
       const scoreEl = root.querySelector(&#x27;#ccg-score&#x27;);
       const scoreFill = root.querySelector(&#x27;#ccg-score-fill&#x27;);
       const resultMessage = root.querySelector(&#x27;#ccg-result-message&#x27;);
+      const dayScoreEls = {
+        morning: root.querySelector(&#x27;#ccg-morning-score&#x27;),
+        lunch: root.querySelector(&#x27;#ccg-lunch-score&#x27;),
+        evening: root.querySelector(&#x27;#ccg-evening-score&#x27;)
+      };
       const showSim = root.querySelector(&#x27;#ccg-show-sim&#x27;);
       const repick = root.querySelector(&#x27;#ccg-repick&#x27;);
       const simulation = root.querySelector(&#x27;#ccg-simulation&#x27;);
@@ -1383,6 +1417,21 @@ html&gt;body{padding:0}&lt;/style&gt;
           const item = getChoice(block.dataset.block);
           return item ? item.dataset.label : &#x27;&#x27;;
         }).filter(Boolean);
+      }
+
+      function updateDayScores() {
+        const dayBlocks = {
+          morning: [&#x27;morning-move&#x27;, &#x27;morning-energy&#x27;],
+          lunch: [&#x27;lunch-meal&#x27;, &#x27;lunch-waste&#x27;],
+          evening: [&#x27;evening-return&#x27;, &#x27;evening-power&#x27;]
+        };
+        Object.keys(dayBlocks).forEach((day) =&gt; {
+          const dayTotal = dayBlocks[day].reduce((sum, key) =&gt; {
+            const button = getChoice(key);
+            return sum + Number(button ? button.dataset.score : 0);
+          }, 0);
+          dayScoreEls[day].textContent = dayTotal + &#x27;/4&#x27;;
+        });
       }
 
       function renderSolarPhotons() {
@@ -1550,6 +1599,7 @@ html&gt;body{padding:0}&lt;/style&gt;
         }, 0);
         scoreEl.textContent = String(carbon);
         scoreFill.style.width = Math.round(carbon / 12 * 100) + &#x27;%&#x27;;
+        updateDayScores();
         const labels = summarizeChoices();
         resultMessage.textContent = &#x27;오늘은 &#x27; + labels.slice(0, 3).join(&#x27;, &#x27;) + &#x27; 등의 선택으로 &#x27; + carbon + &#x27;/12 만큼 표시됐어요. 이제 공기층 속 열의 움직임을 관찰해 보세요.&#x27;;
         result.hidden = false;
@@ -1580,6 +1630,7 @@ html&gt;body{padding:0}&lt;/style&gt;
         seaLevel.hidden = true;
         updateFlow(1);
         updateSelection();
+        Object.values(dayScoreEls).forEach((element) =&gt; { element.textContent = &#x27;0/4&#x27;; });
         window.scrollTo({ top: 0, behavior: &#x27;smooth&#x27; });
       }
 
