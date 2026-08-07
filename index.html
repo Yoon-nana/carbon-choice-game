@@ -1,0 +1,1845 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Climate Chain Game</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Climate Chain Game" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Climate Chain Game&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --red: light-dark(rgb(186 38 35), rgb(250 66 62));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: var(--border-radius-lg, 12.5px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed=&quot;true&quot;],
+    [aria-selected=&quot;true&quot;],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: 16px !important;
+  height: 16px !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;style&gt;
+  #climate-chain-game {
+    --ccg-bg: var(--background, #fff9ef);
+    --ccg-surface: var(--card, #ffffff);
+    --ccg-fg: var(--foreground, #243248);
+    --ccg-muted: var(--muted-foreground, #687386);
+    --ccg-border: var(--border, #eadfcf);
+    --ccg-orange: var(--viz-series-1, #ef704d);
+    --ccg-yellow: var(--viz-series-4, #e9b83f);
+    --ccg-green: var(--viz-series-2, #4e9f75);
+    --ccg-blue: var(--viz-series-3, #4d9ed8);
+    --ccg-red: #dc735f;
+    --ccg-ink: #151515;
+    color: var(--ccg-fg);
+    font-family: &quot;Arial Rounded MT Bold&quot;, &quot;Trebuchet MS&quot;, system-ui, -apple-system, sans-serif;
+    max-width: 1080px;
+    margin: 0 auto;
+    line-height: 1.35;
+  }
+  #climate-chain-game * { box-sizing: border-box; }
+  #climate-chain-game .ccg-shell { padding: 20px 22px 24px; background: color-mix(in srgb, var(--ccg-yellow) 10%, var(--ccg-bg)); border: 3px solid color-mix(in srgb, var(--ccg-yellow) 38%, var(--ccg-border)); border-radius: 28px; box-shadow: 0 6px 0 color-mix(in srgb, var(--ccg-orange) 20%, transparent); }
+  #climate-chain-game .ccg-top { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; }
+  #climate-chain-game .ccg-kicker { color: var(--ccg-green); font-size: 14px; font-weight: 500; letter-spacing: .02em; }
+  #climate-chain-game h1 { margin: 3px 0 5px; font-size: clamp(24px, 4vw, 34px); line-height: 1.1; font-weight: 500; }
+  #climate-chain-game h2 { margin: 2px 0 7px; font-size: clamp(20px, 3vw, 28px); line-height: 1.15; font-weight: 500; }
+  #climate-chain-game .ccg-sub { margin: 0; color: var(--ccg-muted); font-size: 14px; }
+  #climate-chain-game .ccg-top-badge { flex: 0 0 auto; padding: 9px 13px; border: 2px solid color-mix(in srgb, var(--ccg-orange) 40%, var(--ccg-border)); border-radius: 999px; color: var(--ccg-ink); background: color-mix(in srgb, var(--ccg-orange) 27%, var(--ccg-surface)); font-size: 12px; white-space: nowrap; }
+  #climate-chain-game .ccg-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 18px 0 17px; color: var(--ccg-muted); font-size: 12px; }
+  #climate-chain-game .ccg-flow-step { padding: 7px 11px; border: 2px solid var(--ccg-border); border-radius: 999px; background: var(--ccg-surface); }
+  #climate-chain-game .ccg-flow-step.is-active { color: var(--ccg-orange); border-color: var(--ccg-orange); background: color-mix(in srgb, var(--ccg-orange) 10%, var(--ccg-surface)); font-weight: 500; }
+  #climate-chain-game .ccg-flow-arrow { color: var(--ccg-orange); font-size: 16px; }
+  #climate-chain-game .ccg-planner-head { display: flex; justify-content: space-between; gap: 14px; align-items: end; margin-bottom: 12px; }
+  #climate-chain-game .ccg-planner-head p { margin: 0; color: var(--ccg-muted); font-size: 13px; }
+  #climate-chain-game .ccg-picked { color: var(--ccg-green); font-size: 12px; font-weight: 500; white-space: nowrap; }
+  #climate-chain-game .ccg-day-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  #climate-chain-game .ccg-day { min-width: 0; padding: 14px; border: 2px solid var(--ccg-border); border-radius: 22px; background: color-mix(in srgb, var(--ccg-surface) 84%, var(--ccg-yellow) 16%); box-shadow: 0 4px 0 color-mix(in srgb, var(--ccg-border) 50%, transparent); }
+  #climate-chain-game .ccg-day.morning { border-top: 4px solid var(--ccg-orange); }
+  #climate-chain-game .ccg-day.lunch { border-top: 4px solid var(--ccg-yellow); }
+  #climate-chain-game .ccg-day.evening { border-top: 4px solid var(--ccg-blue); }
+  #climate-chain-game .ccg-day-head { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; }
+  #climate-chain-game .ccg-day-icon { display: inline-flex; width: 38px; height: 38px; align-items: center; justify-content: center; border: 2px solid color-mix(in srgb, var(--ccg-yellow) 55%, var(--ccg-border)); border-radius: 50%; background: color-mix(in srgb, var(--ccg-yellow) 36%, var(--ccg-surface)); font-size: 19px; }
+  #climate-chain-game .ccg-day-head strong { display: block; font-size: 17px; font-weight: 500; }
+  #climate-chain-game .ccg-day-head small { display: block; margin-top: 1px; color: var(--ccg-muted); font-size: 11px; }
+  #climate-chain-game .ccg-block + .ccg-block { margin-top: 13px; padding-top: 12px; border-top: 2px dashed color-mix(in srgb, var(--ccg-border) 75%, transparent); }
+  #climate-chain-game .ccg-block-head { display: flex; gap: 8px; align-items: start; margin-bottom: 7px; }
+  #climate-chain-game .ccg-block-number { display: inline-flex; flex: 0 0 auto; width: 21px; height: 21px; align-items: center; justify-content: center; border-radius: 6px; color: var(--ccg-orange); background: color-mix(in srgb, var(--ccg-orange) 13%, var(--ccg-surface)); font-size: 11px; font-weight: 500; }
+  #climate-chain-game .ccg-block-head strong { display: block; font-size: 13px; font-weight: 500; }
+  #climate-chain-game .ccg-block-head small { display: block; margin-top: 1px; color: var(--ccg-muted); font-size: 11px; }
+  #climate-chain-game .ccg-choice-list { display: grid; gap: 6px; }
+  #climate-chain-game .ccg-choice { width: 100%; min-height: 53px; padding: 10px 11px; border: 2px solid var(--ccg-border); border-radius: 16px; color: var(--ccg-fg); background: var(--ccg-surface); text-align: left; font: inherit; cursor: pointer; box-shadow: 0 3px 0 color-mix(in srgb, var(--ccg-border) 62%, transparent); transition: border-color .18s ease, background .18s ease, transform .18s ease, box-shadow .18s ease; }
+  #climate-chain-game .ccg-choice:hover { transform: translateY(-2px); border-color: var(--ccg-green); box-shadow: 0 5px 0 color-mix(in srgb, var(--ccg-green) 25%, transparent); }
+  #climate-chain-game .ccg-choice[aria-pressed=&quot;true&quot;] { border-color: var(--ccg-orange); color: var(--ccg-ink); background: color-mix(in srgb, var(--ccg-orange) 30%, var(--ccg-surface)); box-shadow: 0 3px 0 color-mix(in srgb, var(--ccg-orange) 42%, transparent); }
+  #climate-chain-game .ccg-choice[aria-pressed=&quot;true&quot;] small, #climate-chain-game .ccg-choice[aria-pressed=&quot;true&quot;] em { color: var(--ccg-ink); }
+  #climate-chain-game .ccg-choice strong { display: block; font-size: 12px; font-weight: 500; }
+  #climate-chain-game .ccg-choice small { display: block; margin-top: 2px; color: var(--ccg-muted); font-size: 10px; }
+  #climate-chain-game .ccg-choice em { float: right; color: var(--ccg-orange); font-style: normal; font-size: 11px; font-weight: 500; }
+  #climate-chain-game .ccg-action-row { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; margin-top: 14px; }
+  #climate-chain-game .ccg-btn { padding: 10px 15px; border: 2px solid var(--ccg-border); border-radius: 999px; color: var(--ccg-fg); background: var(--ccg-surface); font: inherit; font-weight: 500; cursor: pointer; box-shadow: 0 3px 0 color-mix(in srgb, var(--ccg-border) 62%, transparent); transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+  #climate-chain-game .ccg-btn:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 5px 0 color-mix(in srgb, var(--ccg-orange) 25%, transparent); }
+  #climate-chain-game .ccg-btn.primary { border-color: color-mix(in srgb, var(--ccg-green) 72%, var(--ccg-border)); color: var(--ccg-ink); background: color-mix(in srgb, var(--ccg-green) 80%, var(--ccg-yellow)); }
+  #climate-chain-game .ccg-btn:disabled { opacity: .46; cursor: not-allowed; }
+  #climate-chain-game .ccg-btn.ghost { background: transparent; }
+  #climate-chain-game .ccg-help { color: var(--ccg-muted); font-size: 12px; }
+  #climate-chain-game .ccg-result { margin-top: 15px; padding: 16px; border: 3px solid color-mix(in srgb, var(--ccg-orange) 56%, var(--ccg-border)); border-radius: 22px; background: color-mix(in srgb, var(--ccg-orange) 14%, var(--ccg-surface)); }
+  #climate-chain-game .ccg-result[hidden], #climate-chain-game .ccg-simulation[hidden], #climate-chain-game .ccg-sea-level[hidden] { display: none; }
+  #climate-chain-game .ccg-result-line { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 12px; }
+  #climate-chain-game .ccg-result-line strong { font-size: 17px; font-weight: 500; }
+  #climate-chain-game .ccg-score { color: var(--ccg-orange); font-size: 29px; font-weight: 500; }
+  #climate-chain-game .ccg-score-bar { height: 9px; margin-top: 10px; overflow: hidden; border-radius: 99px; background: color-mix(in srgb, var(--ccg-border) 72%, transparent); }
+  #climate-chain-game .ccg-score-fill { width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--ccg-green), var(--ccg-orange)); transition: width .65s ease; }
+  #climate-chain-game .ccg-result-message { margin: 10px 0 0; color: var(--ccg-muted); font-size: 13px; }
+  #climate-chain-game .ccg-simulation { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--ccg-border); }
+  #climate-chain-game .ccg-sim-intro { display: flex; justify-content: space-between; gap: 18px; align-items: end; margin-bottom: 12px; }
+  #climate-chain-game .ccg-sim-kicker { color: var(--ccg-red); font-size: 13px; font-weight: 500; }
+  #climate-chain-game .ccg-sim-intro p { margin: 0; color: var(--ccg-muted); font-size: 13px; }
+  #climate-chain-game .ccg-sim-layout { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(220px, .55fr); gap: 14px; align-items: start; }
+  #climate-chain-game .ccg-stage { position: relative; min-width: 0; overflow: hidden; border: 3px solid color-mix(in srgb, var(--ccg-blue) 48%, var(--ccg-border)); border-radius: 22px; background: color-mix(in srgb, var(--ccg-blue) 10%, var(--ccg-bg)); }
+  #climate-chain-game .ccg-stage svg { display: block; width: 100%; height: auto; }
+  #climate-chain-game .ccg-stage .sky { fill: color-mix(in srgb, var(--ccg-blue) 22%, var(--ccg-bg)); }
+  #climate-chain-game .ccg-stage .sun { fill: var(--ccg-yellow); stroke: var(--ccg-surface); stroke-width: 6; }
+  #climate-chain-game .ccg-stage .sun-ray { stroke: var(--ccg-yellow); stroke-width: 3; stroke-linecap: round; opacity: .7; }
+  #climate-chain-game .ccg-stage .solar-path { fill: none; stroke: var(--ccg-yellow); stroke-width: 3; stroke-linecap: round; opacity: .38; }
+  #climate-chain-game .ccg-stage .solar-photon { fill: var(--ccg-yellow); filter: drop-shadow(0 0 4px color-mix(in srgb, var(--ccg-yellow) 70%, transparent)); }
+  #climate-chain-game .ccg-stage .atmosphere { fill: color-mix(in srgb, var(--ccg-orange) 18%, transparent); stroke: color-mix(in srgb, var(--ccg-orange) 65%, var(--ccg-border)); stroke-width: 2; transition: y .5s ease, height .5s ease, fill .5s ease; }
+  #climate-chain-game .ccg-stage .atmosphere-glow { fill: none; stroke: color-mix(in srgb, var(--ccg-orange) 26%, transparent); stroke-width: 8; opacity: .55; transition: y .5s ease, height .5s ease; }
+  #climate-chain-game .ccg-stage .particle { fill: var(--ccg-red); opacity: .82; filter: drop-shadow(0 0 3px color-mix(in srgb, var(--ccg-red) 65%, transparent)); animation: ccg-float 2.6s ease-in-out infinite alternate; }
+  #climate-chain-game .ccg-stage .layer-label { fill: var(--ccg-fg); font-size: 14px; font-weight: 500; }
+  #climate-chain-game .ccg-stage .layer-caption { fill: var(--ccg-muted); font-size: 11px; }
+  #climate-chain-game .ccg-stage .earth { fill: color-mix(in srgb, var(--ccg-blue) 72%, var(--ccg-surface)); stroke: color-mix(in srgb, var(--ccg-green) 60%, var(--ccg-surface)); stroke-width: 7; }
+  #climate-chain-game .ccg-stage .land { fill: color-mix(in srgb, var(--ccg-green) 65%, var(--ccg-surface)); opacity: .9; }
+  #climate-chain-game .ccg-stage .earth-label { fill: var(--ccg-fg); font-size: 14px; font-weight: 500; }
+  #climate-chain-game .ccg-stage .heat-path { fill: none; stroke: var(--ccg-red); stroke-width: 3; stroke-linecap: round; opacity: .58; }
+  #climate-chain-game .ccg-stage .heat-path.bounce { opacity: .8; }
+  #climate-chain-game .ccg-stage .heat-path.escape { opacity: .45; stroke-dasharray: 7 6; }
+  #climate-chain-game .ccg-stage .heat-photon { fill: var(--ccg-red); filter: drop-shadow(0 0 4px color-mix(in srgb, var(--ccg-red) 60%, transparent)); }
+  #climate-chain-game .ccg-stage .arrow-caption { fill: var(--ccg-muted); font-size: 11px; }
+  #climate-chain-game .ccg-stage .corner-label { fill: var(--ccg-muted); font-size: 11px; }
+  #climate-chain-game .ccg-stage .sim-callout { fill: var(--ccg-surface); stroke: var(--ccg-border); stroke-width: 1; }
+  #climate-chain-game .ccg-stage .sim-callout-text { fill: var(--ccg-fg); font-size: 12px; font-weight: 500; }
+  #climate-chain-game .ccg-observe-panel { min-width: 0; padding: 15px; border: 2px solid var(--ccg-border); border-radius: 22px; background: color-mix(in srgb, var(--ccg-surface) 90%, var(--ccg-yellow) 10%); box-shadow: 0 4px 0 color-mix(in srgb, var(--ccg-border) 48%, transparent); }
+  #climate-chain-game .ccg-observe-panel h3 { margin: 0 0 12px; font-size: 15px; font-weight: 500; }
+  #climate-chain-game .ccg-measure { display: grid; grid-template-columns: 1fr auto; gap: 4px 9px; padding: 9px 0; border-top: 1px solid var(--ccg-border); }
+  #climate-chain-game .ccg-measure:first-of-type { border-top: 0; }
+  #climate-chain-game .ccg-measure span { color: var(--ccg-muted); font-size: 12px; }
+  #climate-chain-game .ccg-measure strong { font-size: 18px; font-weight: 500; }
+  #climate-chain-game .ccg-measure .carbon-value { color: var(--ccg-orange); }
+  #climate-chain-game .ccg-measure .layer-value { color: var(--ccg-red); }
+  #climate-chain-game .ccg-measure .heat-value { color: var(--ccg-yellow); }
+  #climate-chain-game .ccg-legend { display: grid; gap: 7px; margin: 13px 0; padding-top: 11px; border-top: 1px solid var(--ccg-border); }
+  #climate-chain-game .ccg-legend-item { display: flex; align-items: center; gap: 7px; color: var(--ccg-muted); font-size: 11px; }
+  #climate-chain-game .ccg-dot { display: inline-block; flex: 0 0 auto; width: 10px; height: 10px; border-radius: 50%; }
+  #climate-chain-game .ccg-dot.sunlight { background: var(--ccg-yellow); }
+  #climate-chain-game .ccg-dot.heat { background: var(--ccg-red); }
+  #climate-chain-game .ccg-dot.particle-dot { background: var(--ccg-orange); }
+  #climate-chain-game .ccg-note { margin: 12px 0 0; color: var(--ccg-muted); font-size: 11px; }
+  #climate-chain-game .ccg-next-row { margin-top: 16px; padding-top: 15px; border-top: 1px solid var(--ccg-border); }
+  #climate-chain-game .ccg-sea-level { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--ccg-border); }
+  #climate-chain-game .ccg-sea-intro { display: flex; justify-content: space-between; gap: 18px; align-items: end; margin-bottom: 12px; }
+  #climate-chain-game .ccg-sea-kicker { color: var(--ccg-blue); font-size: 13px; font-weight: 500; }
+  #climate-chain-game .ccg-sea-intro p { margin: 0; color: var(--ccg-muted); font-size: 13px; }
+  #climate-chain-game .ccg-sea-layout { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(220px, .55fr); gap: 14px; align-items: start; }
+  #climate-chain-game .ccg-sea-stage { position: relative; min-width: 0; overflow: hidden; border: 3px solid color-mix(in srgb, var(--ccg-blue) 48%, var(--ccg-border)); border-radius: 22px; background: color-mix(in srgb, var(--ccg-blue) 10%, var(--ccg-bg)); }
+  #climate-chain-game .ccg-sea-stage svg { display: block; width: 100%; height: auto; }
+  #climate-chain-game .ccg-sea-stage .sea-sky { fill: color-mix(in srgb, var(--ccg-blue) 22%, var(--ccg-bg)); }
+  #climate-chain-game .ccg-sea-stage .sea-sun { fill: var(--ccg-yellow); opacity: .82; }
+  #climate-chain-game .ccg-sea-stage .sea-cloud { fill: color-mix(in srgb, var(--ccg-surface) 72%, var(--ccg-blue)); opacity: .72; }
+  #climate-chain-game .ccg-sea-stage .sea-land { fill: color-mix(in srgb, var(--ccg-green) 70%, var(--ccg-surface)); }
+  #climate-chain-game .ccg-sea-stage .sea-house { fill: color-mix(in srgb, var(--ccg-orange) 62%, var(--ccg-surface)); stroke: var(--ccg-surface); stroke-width: 2; }
+  #climate-chain-game .ccg-sea-stage .sea-roof { fill: var(--ccg-red); }
+  #climate-chain-game .ccg-sea-stage .sea-ocean { fill: color-mix(in srgb, var(--ccg-blue) 76%, var(--ccg-surface)); opacity: .9; transition: y .9s ease, height .9s ease; }
+  #climate-chain-game .ccg-sea-stage .sea-wave { fill: none; stroke: color-mix(in srgb, var(--ccg-surface) 72%, var(--ccg-blue)); stroke-width: 3; opacity: .8; transition: transform .9s ease; }
+  #climate-chain-game .ccg-sea-stage .sea-line { stroke: var(--ccg-red); stroke-width: 2; stroke-dasharray: 7 5; opacity: .9; transition: y .9s ease; }
+  #climate-chain-game .ccg-sea-stage .sea-label { fill: var(--ccg-fg); font-size: 14px; font-weight: 500; }
+  #climate-chain-game .ccg-sea-stage .sea-caption { fill: var(--ccg-muted); font-size: 11px; }
+  #climate-chain-game .ccg-sea-stage .sea-rise-label { fill: var(--ccg-red); font-size: 13px; font-weight: 500; }
+  #climate-chain-game .ccg-sea-value { color: var(--ccg-blue); }
+  #climate-chain-game .ccg-footer { margin-top: 14px; color: var(--ccg-muted); font-size: 11px; }
+  @keyframes ccg-float { from { transform: translate(0, 0); } to { transform: translate(5px, -4px); } }
+  @media (prefers-reduced-motion: reduce) {
+    #climate-chain-game .ccg-choice { transition: none; }
+    #climate-chain-game .ccg-stage .particle { animation: none; }
+  }
+  @media (max-width: 760px) {
+    #climate-chain-game .ccg-shell { padding: 15px; }
+    #climate-chain-game .ccg-top { display: block; }
+    #climate-chain-game .ccg-top-badge { display: inline-block; margin-top: 10px; }
+    #climate-chain-game .ccg-day-grid { grid-template-columns: 1fr; }
+    #climate-chain-game .ccg-day { padding: 12px; }
+    #climate-chain-game .ccg-sim-layout { grid-template-columns: 1fr; }
+    #climate-chain-game .ccg-sea-layout { grid-template-columns: 1fr; }
+    #climate-chain-game .ccg-observe-panel { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 10px; }
+    #climate-chain-game .ccg-observe-panel h3, #climate-chain-game .ccg-legend, #climate-chain-game .ccg-observe-panel .ccg-btn, #climate-chain-game .ccg-note { grid-column: 1 / -1; }
+    #climate-chain-game .ccg-legend { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 440px) {
+    #climate-chain-game .ccg-flow { gap: 4px; font-size: 10px; }
+    #climate-chain-game .ccg-flow-step { padding-inline: 6px; }
+    #climate-chain-game .ccg-flow-arrow { font-size: 13px; }
+    #climate-chain-game .ccg-planner-head, #climate-chain-game .ccg-sim-intro, #climate-chain-game .ccg-sea-intro { display: block; }
+    #climate-chain-game .ccg-picked { display: inline-block; margin-top: 5px; }
+    #climate-chain-game .ccg-observe-panel { grid-template-columns: 1fr 1fr; }
+    #climate-chain-game .ccg-measure:last-of-type { grid-column: 1 / -1; }
+    #climate-chain-game .ccg-legend { grid-template-columns: 1fr; }
+  }
+&lt;/style&gt;
+
+&lt;div id=&quot;climate-chain-game&quot;&gt;
+  &lt;div class=&quot;ccg-shell&quot;&gt;
+    &lt;header class=&quot;ccg-top&quot;&gt;
+      &lt;div&gt;
+        &lt;div class=&quot;ccg-kicker&quot;&gt;🌱 기후위기교육 · 하루 탄소 탐정&lt;/div&gt;
+        &lt;h1&gt;내 하루의 선택이 열을 가둘까? 🌍&lt;/h1&gt;
+        &lt;p class=&quot;ccg-sub&quot;&gt;아침·점심·저녁의 행동을 고른 뒤, 태양에너지와 열의 움직임을 관찰해 보세요.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;ccg-top-badge&quot; id=&quot;ccg-mode&quot;&gt;1단계 · 하루 선택&lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;div class=&quot;ccg-flow&quot; aria-label=&quot;게임 흐름&quot;&gt;
+      &lt;span class=&quot;ccg-flow-step is-active&quot; id=&quot;ccg-flow-one&quot;&gt;1 하루 선택&lt;/span&gt;
+      &lt;span class=&quot;ccg-flow-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;
+      &lt;span class=&quot;ccg-flow-step&quot; id=&quot;ccg-flow-two&quot;&gt;2 탄소발자국 측정&lt;/span&gt;
+      &lt;span class=&quot;ccg-flow-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;
+      &lt;span class=&quot;ccg-flow-step&quot; id=&quot;ccg-flow-three&quot;&gt;3 열 갇힘 관찰&lt;/span&gt;
+      &lt;span class=&quot;ccg-flow-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;
+      &lt;span class=&quot;ccg-flow-step&quot; id=&quot;ccg-flow-four&quot;&gt;4 해수면 상승&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;section id=&quot;ccg-planner&quot; aria-labelledby=&quot;ccg-planner-title&quot;&gt;
+      &lt;div class=&quot;ccg-planner-head&quot;&gt;
+        &lt;div&gt;
+          &lt;h2 id=&quot;ccg-planner-title&quot;&gt;오늘 하루를 골라 보세요&lt;/h2&gt;
+          &lt;p&gt;각 블록에서 한 가지씩 선택하면, ‘확정하기’로 탄소발자국을 계산합니다.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;ccg-picked&quot; id=&quot;ccg-picked&quot; aria-live=&quot;polite&quot;&gt;0/6 선택&lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;ccg-day-grid&quot;&gt;
+        &lt;section class=&quot;ccg-day morning&quot; aria-labelledby=&quot;ccg-morning-title&quot;&gt;
+          &lt;div class=&quot;ccg-day-head&quot;&gt;
+            &lt;span class=&quot;ccg-day-icon&quot; aria-hidden=&quot;true&quot;&gt;☀&lt;/span&gt;
+            &lt;div&gt;&lt;strong id=&quot;ccg-morning-title&quot;&gt;아침&lt;/strong&gt;&lt;small&gt;학교에 가기 전&lt;/small&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;ccg-block&quot; data-block=&quot;morning-move&quot;&gt;
+            &lt;div class=&quot;ccg-block-head&quot;&gt;&lt;span class=&quot;ccg-block-number&quot;&gt;01&lt;/span&gt;&lt;div&gt;&lt;strong&gt;학교에 갈 때&lt;/strong&gt;&lt;small&gt;어떻게 이동할까요?&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;ccg-choice-list&quot; role=&quot;group&quot; aria-label=&quot;아침 이동 선택&quot;&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;morning-move&quot; data-score=&quot;0&quot; data-label=&quot;걷기·자전거&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;0&lt;/em&gt;&lt;strong&gt;🚶 걷거나 자전거 타기&lt;/strong&gt;&lt;small&gt;내 몸의 힘으로 이동해요&lt;/small&gt;&lt;/button&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;morning-move&quot; data-score=&quot;1&quot; data-label=&quot;버스·지하철&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;1&lt;/em&gt;&lt;strong&gt;🚌 버스·지하철 타기&lt;/strong&gt;&lt;small&gt;여러 명이 함께 이동해요&lt;/small&gt;&lt;/button&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;morning-move&quot; data-score=&quot;2&quot; data-label=&quot;승용차&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;2&lt;/em&gt;&lt;strong&gt;🚗 가족 차 타기&lt;/strong&gt;&lt;small&gt;자동차 연료를 사용해요&lt;/small&gt;&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;ccg-block&quot; data-block=&quot;morning-energy&quot;&gt;
+            &lt;div class=&quot;ccg-block-head&quot;&gt;&lt;span class=&quot;ccg-block-number&quot;&gt;02&lt;/span&gt;&lt;div&gt;&lt;strong&gt;아침 준비를 할 때&lt;/strong&gt;&lt;small&gt;전기를 어떻게 쓸까요?&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;ccg-choice-list&quot; role=&quot;group&quot; aria-label=&quot;아침 전기 사용 선택&quot;&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;morning-energy&quot; data-score=&quot;0&quot; data-label=&quot;필요할 때만 켜기&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;0&lt;/em&gt;&lt;strong&gt;💡 필요할 때만 켜기&lt;/strong&gt;&lt;small&gt;쓰지 않는 불은 꺼요&lt;/small&gt;&lt;/button&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;morning-energy&quot; data-score=&quot;1&quot; data-label=&quot;전기제품 한 가지&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;1&lt;/em&gt;&lt;strong&gt;🔌 전기제품 한 가지 쓰기&lt;/strong&gt;&lt;small&gt;짧은 시간 사용해요&lt;/small&gt;&lt;/button&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;morning-energy&quot; data-score=&quot;2&quot; data-label=&quot;여러 전기제품 켜 두기&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;2&lt;/em&gt;&lt;strong&gt;⚡ 여러 개 켜 두기&lt;/strong&gt;&lt;small&gt;사용하지 않아도 켜져 있어요&lt;/small&gt;&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;ccg-day lunch&quot; aria-labelledby=&quot;ccg-lunch-title&quot;&gt;
+          &lt;div class=&quot;ccg-day-head&quot;&gt;
+            &lt;span class=&quot;ccg-day-icon&quot; aria-hidden=&quot;true&quot;&gt;◐&lt;/span&gt;
+            &lt;div&gt;&lt;strong id=&quot;ccg-lunch-title&quot;&gt;점심&lt;/strong&gt;&lt;small&gt;식탁에서 선택하기&lt;/small&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;ccg-block&quot; data-block=&quot;lunch-meal&quot;&gt;
+            &lt;div class=&quot;ccg-block-head&quot;&gt;&lt;span class=&quot;ccg-block-number&quot;&gt;03&lt;/span&gt;&lt;div&gt;&lt;strong&gt;점심 메뉴를 고를 때&lt;/strong&gt;&lt;small&gt;무엇을 먹을까요?&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;ccg-choice-list&quot; role=&quot;group&quot; aria-label=&quot;점심 메뉴 선택&quot;&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;lunch-meal&quot; data-score=&quot;0&quot; data-label=&quot;채소·밥 중심&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;0&lt;/em&gt;&lt;strong&gt;🥗 채소·밥 중심으로 먹기&lt;/strong&gt;&lt;small&gt;가까운 음식부터 골라요&lt;/small&gt;&lt;/button&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;lunch-meal&quot; data-score=&quot;1&quot; data-label=&quot;여러 음식 조금씩&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;1&lt;/em&gt;&lt;strong&gt;🍚 여러 음식을 조금씩&lt;/strong&gt;&lt;small&gt;먹을 만큼만 담아요&lt;/small&gt;&lt;/button&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;lunch-meal&quot; data-score=&quot;2&quot; data-label=&quot;고기 중심 메뉴&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;2&lt;/em&gt;&lt;strong&gt;🍖 고기 중심 메뉴 고르기&lt;/strong&gt;&lt;small&gt;생산과 운반에 에너지가 들어요&lt;/small&gt;&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;ccg-block&quot; data-block=&quot;lunch-waste&quot;&gt;
+            &lt;div class=&quot;ccg-block-head&quot;&gt;&lt;span class=&quot;ccg-block-number&quot;&gt;04&lt;/span&gt;&lt;div&gt;&lt;strong&gt;식사를 마친 뒤&lt;/strong&gt;&lt;small&gt;남은 음식은 어떻게 할까요?&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;ccg-choice-list&quot; role=&quot;group&quot; aria-label=&quot;음식물 쓰레기 선택&quot;&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;lunch-waste&quot; data-score=&quot;0&quot; data-label=&quot;남김 없이 먹기&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;0&lt;/em&gt;&lt;strong&gt;🍽️ 먹을 만큼만 담아 남김없이&lt;/strong&gt;&lt;small&gt;음식의 수고를 생각해요&lt;/small&gt;&lt;/button&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;lunch-waste&quot; data-score=&quot;1&quot; data-label=&quot;조금 남기기&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;1&lt;/em&gt;&lt;strong&gt;🥄 조금 남기기&lt;/strong&gt;&lt;small&gt;다음엔 양을 줄여 봐요&lt;/small&gt;&lt;/button&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;lunch-waste&quot; data-score=&quot;2&quot; data-label=&quot;많이 남기기&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;2&lt;/em&gt;&lt;strong&gt;🗑️ 많이 남기기&lt;/strong&gt;&lt;small&gt;음식과 처리에도 에너지가 들어요&lt;/small&gt;&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;ccg-day evening&quot; aria-labelledby=&quot;ccg-evening-title&quot;&gt;
+          &lt;div class=&quot;ccg-day-head&quot;&gt;
+            &lt;span class=&quot;ccg-day-icon&quot; aria-hidden=&quot;true&quot;&gt;☾&lt;/span&gt;
+            &lt;div&gt;&lt;strong id=&quot;ccg-evening-title&quot;&gt;저녁&lt;/strong&gt;&lt;small&gt;집에서 하루 마무리&lt;/small&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;ccg-block&quot; data-block=&quot;evening-return&quot;&gt;
+            &lt;div class=&quot;ccg-block-head&quot;&gt;&lt;span class=&quot;ccg-block-number&quot;&gt;05&lt;/span&gt;&lt;div&gt;&lt;strong&gt;집에 돌아올 때&lt;/strong&gt;&lt;small&gt;어떻게 돌아갈까요?&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;ccg-choice-list&quot; role=&quot;group&quot; aria-label=&quot;저녁 이동 선택&quot;&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;evening-return&quot; data-score=&quot;0&quot; data-label=&quot;걸어서 돌아오기&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;0&lt;/em&gt;&lt;strong&gt;🚶 걸어서 돌아오기&lt;/strong&gt;&lt;small&gt;천천히 마을을 살펴요&lt;/small&gt;&lt;/button&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;evening-return&quot; data-score=&quot;1&quot; data-label=&quot;대중교통 이용하기&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;1&lt;/em&gt;&lt;strong&gt;🚌 대중교통 이용하기&lt;/strong&gt;&lt;small&gt;여러 명이 함께 이동해요&lt;/small&gt;&lt;/button&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;evening-return&quot; data-score=&quot;2&quot; data-label=&quot;차를 타고 돌아오기&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;2&lt;/em&gt;&lt;strong&gt;🚙 차를 타고 돌아오기&lt;/strong&gt;&lt;small&gt;자동차 연료를 사용해요&lt;/small&gt;&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;ccg-block&quot; data-block=&quot;evening-power&quot;&gt;
+            &lt;div class=&quot;ccg-block-head&quot;&gt;&lt;span class=&quot;ccg-block-number&quot;&gt;06&lt;/span&gt;&lt;div&gt;&lt;strong&gt;잠들기 전&lt;/strong&gt;&lt;small&gt;집 안의 전기를 어떻게 할까요?&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;ccg-choice-list&quot; role=&quot;group&quot; aria-label=&quot;저녁 전기 사용 선택&quot;&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;evening-power&quot; data-score=&quot;0&quot; data-label=&quot;불과 화면 끄기&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;0&lt;/em&gt;&lt;strong&gt;🌙 불과 화면을 끄고 쉬기&lt;/strong&gt;&lt;small&gt;필요 없는 전기를 줄여요&lt;/small&gt;&lt;/button&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;evening-power&quot; data-score=&quot;1&quot; data-label=&quot;필요한 동안만 켜기&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;1&lt;/em&gt;&lt;strong&gt;⏰ 필요한 동안만 켜기&lt;/strong&gt;&lt;small&gt;시간을 정해 사용해요&lt;/small&gt;&lt;/button&gt;
+              &lt;button class=&quot;ccg-choice&quot; type=&quot;button&quot; data-key=&quot;evening-power&quot; data-score=&quot;2&quot; data-label=&quot;켜 둔 채 잠들기&quot; aria-pressed=&quot;false&quot;&gt;&lt;em&gt;2&lt;/em&gt;&lt;strong&gt;📺 불과 화면을 켜 둔 채 잠들기&lt;/strong&gt;&lt;small&gt;쓰지 않아도 전기가 흘러요&lt;/small&gt;&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;ccg-action-row&quot;&gt;
+        &lt;button class=&quot;ccg-btn primary&quot; id=&quot;ccg-confirm&quot; type=&quot;button&quot; disabled&gt;✅ 하루 선택 확정하기&lt;/button&gt;
+        &lt;span class=&quot;ccg-help&quot; id=&quot;ccg-help&quot;&gt;6개 블록을 모두 골라 주세요.&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;ccg-result&quot; id=&quot;ccg-result&quot; hidden aria-live=&quot;polite&quot;&gt;
+      &lt;div class=&quot;ccg-result-line&quot;&gt;&lt;strong&gt;오늘의 탄소발자국&lt;/strong&gt;&lt;span class=&quot;ccg-score&quot; id=&quot;ccg-score&quot;&gt;0&lt;/span&gt;&lt;span&gt;/ 12&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;ccg-score-bar&quot; aria-hidden=&quot;true&quot;&gt;&lt;div class=&quot;ccg-score-fill&quot; id=&quot;ccg-score-fill&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;p class=&quot;ccg-result-message&quot; id=&quot;ccg-result-message&quot;&gt;&lt;/p&gt;
+      &lt;div class=&quot;ccg-action-row&quot;&gt;
+        &lt;button class=&quot;ccg-btn primary&quot; id=&quot;ccg-show-sim&quot; type=&quot;button&quot;&gt;🔍 온실 효과 관찰하기 →&lt;/button&gt;
+        &lt;button class=&quot;ccg-btn ghost&quot; id=&quot;ccg-repick&quot; type=&quot;button&quot;&gt;🔄 다시 선택하기&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;ccg-simulation&quot; id=&quot;ccg-simulation&quot; hidden aria-labelledby=&quot;ccg-sim-title&quot;&gt;
+      &lt;div class=&quot;ccg-sim-intro&quot;&gt;
+        &lt;div&gt;
+          &lt;div class=&quot;ccg-sim-kicker&quot;&gt;3단계 · 태양에너지와 열의 움직임&lt;/div&gt;
+          &lt;h2 id=&quot;ccg-sim-title&quot;&gt;태양에너지는 내려오고, 열은 일부 다시 내려와요&lt;/h2&gt;
+          &lt;p&gt;탄소발자국이 클수록 온실가스 입자가 많은 공기층을 볼 수 있어요.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;button class=&quot;ccg-btn ghost&quot; id=&quot;ccg-replay&quot; type=&quot;button&quot;&gt;🔁 움직임 다시 보기&lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;ccg-sim-layout&quot;&gt;
+        &lt;div class=&quot;ccg-stage&quot;&gt;
+          &lt;svg id=&quot;ccg-svg&quot; viewBox=&quot;0 0 720 500&quot; role=&quot;img&quot; aria-label=&quot;태양에너지가 지구로 내려오고 지구의 열이 온실가스 공기층에서 일부 갇히는 모형&quot;&gt;
+            &lt;defs&gt;
+              &lt;linearGradient id=&quot;ccg-sky-gradient&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;1&quot;&gt;
+                &lt;stop offset=&quot;0&quot; stop-color=&quot;var(--ccg-blue)&quot; stop-opacity=&quot;.32&quot;&gt;&lt;/stop&gt;
+                &lt;stop offset=&quot;1&quot; stop-color=&quot;var(--ccg-yellow)&quot; stop-opacity=&quot;.1&quot;&gt;&lt;/stop&gt;
+              &lt;/linearGradient&gt;
+              &lt;marker id=&quot;ccg-arrow-yellow&quot; markerWidth=&quot;8&quot; markerHeight=&quot;8&quot; refX=&quot;6&quot; refY=&quot;3&quot; orient=&quot;auto&quot;&gt;
+                &lt;path d=&quot;M0,0 L6,3 L0,6 Z&quot; fill=&quot;var(--ccg-yellow)&quot;&gt;&lt;/path&gt;
+              &lt;/marker&gt;
+              &lt;marker id=&quot;ccg-arrow-red&quot; markerWidth=&quot;8&quot; markerHeight=&quot;8&quot; refX=&quot;6&quot; refY=&quot;3&quot; orient=&quot;auto&quot;&gt;
+                &lt;path d=&quot;M0,0 L6,3 L0,6 Z&quot; fill=&quot;var(--ccg-red)&quot;&gt;&lt;/path&gt;
+              &lt;/marker&gt;
+            &lt;/defs&gt;
+            &lt;rect class=&quot;sky&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;720&quot; height=&quot;500&quot; fill=&quot;url(#ccg-sky-gradient)&quot;&gt;&lt;/rect&gt;
+            &lt;circle class=&quot;sun&quot; cx=&quot;88&quot; cy=&quot;72&quot; r=&quot;30&quot;&gt;&lt;/circle&gt;
+            &lt;text class=&quot;corner-label&quot; x=&quot;66&quot; y=&quot;119&quot;&gt;태양&lt;/text&gt;
+            &lt;g class=&quot;sun-rays&quot; aria-hidden=&quot;true&quot;&gt;
+              &lt;line class=&quot;sun-ray&quot; x1=&quot;88&quot; y1=&quot;31&quot; x2=&quot;88&quot; y2=&quot;15&quot;&gt;&lt;/line&gt;
+              &lt;line class=&quot;sun-ray&quot; x1=&quot;48&quot; y1=&quot;48&quot; x2=&quot;36&quot; y2=&quot;36&quot;&gt;&lt;/line&gt;
+              &lt;line class=&quot;sun-ray&quot; x1=&quot;128&quot; y1=&quot;48&quot; x2=&quot;140&quot; y2=&quot;36&quot;&gt;&lt;/line&gt;
+              &lt;line class=&quot;sun-ray&quot; x1=&quot;39&quot; y1=&quot;83&quot; x2=&quot;22&quot; y2=&quot;86&quot;&gt;&lt;/line&gt;
+              &lt;line class=&quot;sun-ray&quot; x1=&quot;137&quot; y1=&quot;83&quot; x2=&quot;154&quot; y2=&quot;86&quot;&gt;&lt;/line&gt;
+            &lt;/g&gt;
+            &lt;g id=&quot;ccg-solar-paths&quot; aria-hidden=&quot;true&quot;&gt;
+              &lt;path id=&quot;ccg-solar-path-1&quot; class=&quot;solar-path&quot; marker-end=&quot;url(#ccg-arrow-yellow)&quot; d=&quot;M88 108 C135 146 170 188 214 345&quot;&gt;&lt;/path&gt;
+              &lt;path id=&quot;ccg-solar-path-2&quot; class=&quot;solar-path&quot; marker-end=&quot;url(#ccg-arrow-yellow)&quot; d=&quot;M88 108 C185 140 250 207 300 345&quot;&gt;&lt;/path&gt;
+              &lt;path id=&quot;ccg-solar-path-3&quot; class=&quot;solar-path&quot; marker-end=&quot;url(#ccg-arrow-yellow)&quot; d=&quot;M88 108 C215 145 306 233 366 345&quot;&gt;&lt;/path&gt;
+              &lt;path id=&quot;ccg-solar-path-4&quot; class=&quot;solar-path&quot; marker-end=&quot;url(#ccg-arrow-yellow)&quot; d=&quot;M88 108 C265 163 358 232 430 345&quot;&gt;&lt;/path&gt;
+              &lt;path id=&quot;ccg-solar-path-5&quot; class=&quot;solar-path&quot; marker-end=&quot;url(#ccg-arrow-yellow)&quot; d=&quot;M88 108 C320 168 430 240 494 345&quot;&gt;&lt;/path&gt;
+            &lt;/g&gt;
+            &lt;g id=&quot;ccg-solar-photons&quot; aria-hidden=&quot;true&quot;&gt;&lt;/g&gt;
+            &lt;rect id=&quot;ccg-atmosphere-glow&quot; class=&quot;atmosphere-glow&quot; x=&quot;42&quot; y=&quot;159&quot; width=&quot;636&quot; height=&quot;98&quot; rx=&quot;20&quot;&gt;&lt;/rect&gt;
+            &lt;rect id=&quot;ccg-atmosphere&quot; class=&quot;atmosphere&quot; x=&quot;50&quot; y=&quot;167&quot; width=&quot;620&quot; height=&quot;82&quot; rx=&quot;16&quot;&gt;&lt;/rect&gt;
+            &lt;text id=&quot;ccg-layer-label&quot; class=&quot;layer-label&quot; x=&quot;360&quot; y=&quot;194&quot; text-anchor=&quot;middle&quot;&gt;온실가스가 있는 공기층&lt;/text&gt;
+            &lt;text id=&quot;ccg-layer-caption&quot; class=&quot;layer-caption&quot; x=&quot;360&quot; y=&quot;215&quot; text-anchor=&quot;middle&quot;&gt;입자가 열을 붙잡을 수 있어요&lt;/text&gt;
+            &lt;g id=&quot;ccg-particles&quot; aria-label=&quot;온실가스 입자&quot;&gt;&lt;/g&gt;
+            &lt;g id=&quot;ccg-heat-paths&quot; aria-hidden=&quot;true&quot;&gt;&lt;/g&gt;
+            &lt;g id=&quot;ccg-heat-photons&quot; aria-hidden=&quot;true&quot;&gt;&lt;/g&gt;
+            &lt;circle class=&quot;earth&quot; cx=&quot;360&quot; cy=&quot;424&quot; r=&quot;91&quot;&gt;&lt;/circle&gt;
+            &lt;path class=&quot;land&quot; d=&quot;M300 391 C323 371 345 378 353 392 C367 415 388 403 405 414 C423 425 434 449 419 464 L295 464 C278 444 279 409 300 391 Z&quot;&gt;&lt;/path&gt;
+            &lt;path class=&quot;land&quot; d=&quot;M399 359 C426 366 440 379 441 393 C430 402 414 399 402 389 C392 380 389 368 399 359 Z&quot;&gt;&lt;/path&gt;
+            &lt;text class=&quot;earth-label&quot; x=&quot;360&quot; y=&quot;432&quot; text-anchor=&quot;middle&quot;&gt;지구 표면&lt;/text&gt;
+            &lt;text class=&quot;arrow-caption&quot; x=&quot;205&quot; y=&quot;286&quot; text-anchor=&quot;middle&quot;&gt;태양에너지 ↓&lt;/text&gt;
+            &lt;text class=&quot;arrow-caption&quot; x=&quot;528&quot; y=&quot;295&quot; text-anchor=&quot;middle&quot;&gt;지구의 열 ↑&lt;/text&gt;
+            &lt;rect class=&quot;sim-callout&quot; x=&quot;474&quot; y=&quot;33&quot; width=&quot;200&quot; height=&quot;56&quot; rx=&quot;12&quot;&gt;&lt;/rect&gt;
+            &lt;text class=&quot;sim-callout-text&quot; id=&quot;ccg-sim-callout&quot; x=&quot;574&quot; y=&quot;56&quot; text-anchor=&quot;middle&quot;&gt;열이 올라가요&lt;/text&gt;
+            &lt;text class=&quot;layer-caption&quot; id=&quot;ccg-sim-callout-sub&quot; x=&quot;574&quot; y=&quot;75&quot; text-anchor=&quot;middle&quot;&gt;일부는 우주로 빠져나가요&lt;/text&gt;
+          &lt;/svg&gt;
+        &lt;/div&gt;
+
+        &lt;aside class=&quot;ccg-observe-panel&quot; aria-label=&quot;온실 효과 관찰 결과&quot;&gt;
+          &lt;h3&gt;현재 관찰값&lt;/h3&gt;
+          &lt;div class=&quot;ccg-measure&quot;&gt;&lt;span&gt;탄소발자국&lt;/span&gt;&lt;strong class=&quot;carbon-value&quot; id=&quot;ccg-sim-score&quot;&gt;0/12&lt;/strong&gt;&lt;/div&gt;
+          &lt;div class=&quot;ccg-measure&quot;&gt;&lt;span&gt;공기층 두께&lt;/span&gt;&lt;strong class=&quot;layer-value&quot; id=&quot;ccg-layer-value&quot;&gt;0%&lt;/strong&gt;&lt;/div&gt;
+          &lt;div class=&quot;ccg-measure&quot;&gt;&lt;span&gt;갇힌 열&lt;/span&gt;&lt;strong class=&quot;heat-value&quot; id=&quot;ccg-heat-value&quot;&gt;0/6&lt;/strong&gt;&lt;/div&gt;
+          &lt;div class=&quot;ccg-legend&quot;&gt;
+            &lt;div class=&quot;ccg-legend-item&quot;&gt;&lt;span class=&quot;ccg-dot sunlight&quot;&gt;&lt;/span&gt;노랑 · 태양에너지&lt;/div&gt;
+            &lt;div class=&quot;ccg-legend-item&quot;&gt;&lt;span class=&quot;ccg-dot heat&quot;&gt;&lt;/span&gt;빨강 · 지구에서 올라온 열&lt;/div&gt;
+            &lt;div class=&quot;ccg-legend-item&quot;&gt;&lt;span class=&quot;ccg-dot particle-dot&quot;&gt;&lt;/span&gt;주황 · 온실가스 입자&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;button class=&quot;ccg-btn primary&quot; id=&quot;ccg-replay-side&quot; type=&quot;button&quot;&gt;🔥 열의 움직임 다시 보기&lt;/button&gt;
+          &lt;p class=&quot;ccg-note&quot;&gt;이 숫자는 실제 예측값이 아니라, 선택과 결과의 관계를 보기 위한 학습용 모형이에요.&lt;/p&gt;
+        &lt;/aside&gt;
+      &lt;/div&gt;
+      &lt;p class=&quot;ccg-note&quot;&gt;정확한 표현: 두꺼워지는 것은 오존층이 아니라 온실가스가 늘어난 공기층입니다. 이 모형에서는 그 입자가 지구의 열을 더 많이 아래로 되돌려 보내는 모습을 보여 줍니다.&lt;/p&gt;
+      &lt;div class=&quot;ccg-action-row ccg-next-row&quot;&gt;
+        &lt;button class=&quot;ccg-btn primary&quot; id=&quot;ccg-show-sea&quot; type=&quot;button&quot;&gt;🌊 해수면 상승 확인하기 →&lt;/button&gt;
+        &lt;span class=&quot;ccg-help&quot;&gt;내 탄소발자국만큼 바닷물 높이가 움직여요.&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;ccg-sea-level&quot; id=&quot;ccg-sea-level&quot; hidden aria-labelledby=&quot;ccg-sea-title&quot;&gt;
+      &lt;div class=&quot;ccg-sea-intro&quot;&gt;
+        &lt;div&gt;
+          &lt;div class=&quot;ccg-sea-kicker&quot;&gt;4단계 · 바다의 변화&lt;/div&gt;
+          &lt;h2 id=&quot;ccg-sea-title&quot;&gt;열이 쌓이면, 해수면도 올라가요&lt;/h2&gt;
+          &lt;p&gt;내가 만든 탄소발자국과 같은 칸 수만큼 바닷물이 올라가는 모형이에요.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;ccg-sea-layout&quot;&gt;
+        &lt;div class=&quot;ccg-sea-stage&quot;&gt;
+          &lt;svg viewBox=&quot;0 0 720 360&quot; role=&quot;img&quot; aria-label=&quot;탄소발자국 점수만큼 바닷물이 올라가 해안가를 덮는 모형&quot;&gt;
+            &lt;rect class=&quot;sea-sky&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;720&quot; height=&quot;360&quot;&gt;&lt;/rect&gt;
+            &lt;circle class=&quot;sea-sun&quot; cx=&quot;92&quot; cy=&quot;66&quot; r=&quot;27&quot;&gt;&lt;/circle&gt;
+            &lt;path class=&quot;sea-cloud&quot; d=&quot;M198 76 C208 57 234 53 249 70 C266 61 290 71 293 91 L188 91 C186 84 190 79 198 76 Z&quot;&gt;&lt;/path&gt;
+            &lt;path class=&quot;sea-cloud&quot; d=&quot;M508 116 C518 97 544 93 559 110 C576 101 600 111 603 131 L498 131 C496 124 500 119 508 116 Z&quot;&gt;&lt;/path&gt;
+            &lt;path class=&quot;sea-land&quot; d=&quot;M0 238 C97 220 176 227 258 210 C352 190 423 211 505 198 C584 186 650 197 720 184 L720 360 L0 360 Z&quot;&gt;&lt;/path&gt;
+            &lt;path class=&quot;sea-house&quot; d=&quot;M120 205 L170 170 L220 205 L220 267 L120 267 Z&quot;&gt;&lt;/path&gt;
+            &lt;path class=&quot;sea-roof&quot; d=&quot;M110 207 L170 161 L230 207 Z&quot;&gt;&lt;/path&gt;
+            &lt;rect x=&quot;143&quot; y=&quot;216&quot; width=&quot;20&quot; height=&quot;24&quot; rx=&quot;2&quot; fill=&quot;var(--ccg-yellow)&quot;&gt;&lt;/rect&gt;
+            &lt;rect x=&quot;181&quot; y=&quot;216&quot; width=&quot;20&quot; height=&quot;24&quot; rx=&quot;2&quot; fill=&quot;var(--ccg-yellow)&quot;&gt;&lt;/rect&gt;
+            &lt;path class=&quot;sea-land&quot; d=&quot;M390 224 C419 204 452 209 473 230 C487 244 504 251 531 248 C550 246 567 254 574 270 L360 270 C358 250 372 236 390 224 Z&quot;&gt;&lt;/path&gt;
+            &lt;rect id=&quot;ccg-ocean&quot; class=&quot;sea-ocean&quot; x=&quot;0&quot; y=&quot;270&quot; width=&quot;720&quot; height=&quot;90&quot;&gt;&lt;/rect&gt;
+            &lt;path id=&quot;ccg-sea-wave&quot; class=&quot;sea-wave&quot; d=&quot;M0 270 C70 257 130 283 200 270 S340 257 410 270 S550 283 620 270 S690 257 720 270&quot;&gt;&lt;/path&gt;
+            &lt;line id=&quot;ccg-sea-line&quot; class=&quot;sea-line&quot; x1=&quot;0&quot; y1=&quot;270&quot; x2=&quot;720&quot; y2=&quot;270&quot;&gt;&lt;/line&gt;
+            &lt;text class=&quot;sea-label&quot; x=&quot;54&quot; y=&quot;42&quot;&gt;해수면&lt;/text&gt;
+            &lt;text class=&quot;sea-caption&quot; x=&quot;54&quot; y=&quot;59&quot;&gt;탄소발자국만큼 상승&lt;/text&gt;
+            &lt;text id=&quot;ccg-sea-rise-label&quot; class=&quot;sea-rise-label&quot; x=&quot;624&quot; y=&quot;258&quot; text-anchor=&quot;middle&quot;&gt;+0칸&lt;/text&gt;
+            &lt;text class=&quot;sea-caption&quot; x=&quot;360&quot; y=&quot;342&quot; text-anchor=&quot;middle&quot;&gt;바닷물&lt;/text&gt;
+          &lt;/svg&gt;
+        &lt;/div&gt;
+
+        &lt;aside class=&quot;ccg-observe-panel&quot; aria-label=&quot;해수면 상승 관찰 결과&quot;&gt;
+          &lt;h3&gt;현재 관찰값&lt;/h3&gt;
+          &lt;div class=&quot;ccg-measure&quot;&gt;&lt;span&gt;탄소발자국&lt;/span&gt;&lt;strong class=&quot;carbon-value&quot; id=&quot;ccg-sea-score&quot;&gt;0/12&lt;/strong&gt;&lt;/div&gt;
+          &lt;div class=&quot;ccg-measure&quot;&gt;&lt;span&gt;해수면 상승&lt;/span&gt;&lt;strong class=&quot;sea-value&quot; id=&quot;ccg-sea-value&quot;&gt;0/12칸&lt;/strong&gt;&lt;/div&gt;
+          &lt;p class=&quot;ccg-note&quot;&gt;이 화면에서 바닷물 높이는 앞에서 나온 탄소발자국 점수와 같은 칸 수로 움직여요.&lt;/p&gt;
+          &lt;button class=&quot;ccg-btn ghost&quot; id=&quot;ccg-sea-replay&quot; type=&quot;button&quot;&gt;🌊 해수면 변화 다시 보기&lt;/button&gt;
+        &lt;/aside&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;div class=&quot;ccg-footer&quot;&gt;※ 탄소발자국과 공기층의 변화는 초등 1~2학년의 인과관계 이해를 위한 상징 모형입니다.&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    (() =&gt; {
+      const root = document.getElementById(&#x27;climate-chain-game&#x27;);
+      if (!root) return;
+
+      const choices = Array.from(root.querySelectorAll(&#x27;.ccg-choice&#x27;));
+      const blocks = Array.from(root.querySelectorAll(&#x27;[data-block]&#x27;));
+      const confirmButton = root.querySelector(&#x27;#ccg-confirm&#x27;);
+      const help = root.querySelector(&#x27;#ccg-help&#x27;);
+      const picked = root.querySelector(&#x27;#ccg-picked&#x27;);
+      const result = root.querySelector(&#x27;#ccg-result&#x27;);
+      const scoreEl = root.querySelector(&#x27;#ccg-score&#x27;);
+      const scoreFill = root.querySelector(&#x27;#ccg-score-fill&#x27;);
+      const resultMessage = root.querySelector(&#x27;#ccg-result-message&#x27;);
+      const showSim = root.querySelector(&#x27;#ccg-show-sim&#x27;);
+      const repick = root.querySelector(&#x27;#ccg-repick&#x27;);
+      const simulation = root.querySelector(&#x27;#ccg-simulation&#x27;);
+      const mode = root.querySelector(&#x27;#ccg-mode&#x27;);
+      const flowOne = root.querySelector(&#x27;#ccg-flow-one&#x27;);
+      const flowTwo = root.querySelector(&#x27;#ccg-flow-two&#x27;);
+      const flowThree = root.querySelector(&#x27;#ccg-flow-three&#x27;);
+      const flowFour = root.querySelector(&#x27;#ccg-flow-four&#x27;);
+      const simScore = root.querySelector(&#x27;#ccg-sim-score&#x27;);
+      const layerValue = root.querySelector(&#x27;#ccg-layer-value&#x27;);
+      const heatValue = root.querySelector(&#x27;#ccg-heat-value&#x27;);
+      const layer = root.querySelector(&#x27;#ccg-atmosphere&#x27;);
+      const layerGlow = root.querySelector(&#x27;#ccg-atmosphere-glow&#x27;);
+      const particles = root.querySelector(&#x27;#ccg-particles&#x27;);
+      const solarPhotons = root.querySelector(&#x27;#ccg-solar-photons&#x27;);
+      const heatPaths = root.querySelector(&#x27;#ccg-heat-paths&#x27;);
+      const heatPhotons = root.querySelector(&#x27;#ccg-heat-photons&#x27;);
+      const callout = root.querySelector(&#x27;#ccg-sim-callout&#x27;);
+      const calloutSub = root.querySelector(&#x27;#ccg-sim-callout-sub&#x27;);
+      const showSea = root.querySelector(&#x27;#ccg-show-sea&#x27;);
+      const seaLevel = root.querySelector(&#x27;#ccg-sea-level&#x27;);
+      const seaScore = root.querySelector(&#x27;#ccg-sea-score&#x27;);
+      const seaValue = root.querySelector(&#x27;#ccg-sea-value&#x27;);
+      const ocean = root.querySelector(&#x27;#ccg-ocean&#x27;);
+      const seaWave = root.querySelector(&#x27;#ccg-sea-wave&#x27;);
+      const seaLine = root.querySelector(&#x27;#ccg-sea-line&#x27;);
+      const seaRiseLabel = root.querySelector(&#x27;#ccg-sea-rise-label&#x27;);
+      const seaReplay = root.querySelector(&#x27;#ccg-sea-replay&#x27;);
+      const replayButtons = [root.querySelector(&#x27;#ccg-replay&#x27;), root.querySelector(&#x27;#ccg-replay-side&#x27;)];
+      let chosen = {};
+      let carbon = 0;
+      let simVisible = false;
+
+      function selectedCount() {
+        return Object.keys(chosen).length;
+      }
+
+      function getChoice(key) {
+        return choices.find((button) =&gt; button.dataset.key === key &amp;&amp; chosen[key] === button.dataset.label);
+      }
+
+      function updateSelection() {
+        choices.forEach((button) =&gt; {
+          const isSelected = chosen[button.dataset.key] === button.dataset.label;
+          button.setAttribute(&#x27;aria-pressed&#x27;, String(isSelected));
+        });
+        const count = selectedCount();
+        picked.textContent = count + &#x27;/6 선택&#x27;;
+        confirmButton.disabled = count !== blocks.length;
+        help.textContent = count === blocks.length ? &#x27;이제 하루 선택을 확정해 보세요.&#x27; : &#x27;6개 블록을 모두 골라 주세요.&#x27;;
+      }
+
+      function updateFlow(step) {
+        [flowOne, flowTwo, flowThree, flowFour].forEach((item) =&gt; item.classList.remove(&#x27;is-active&#x27;));
+        if (step === 1) {
+          flowOne.classList.add(&#x27;is-active&#x27;);
+          mode.textContent = &#x27;1단계 · 하루 선택&#x27;;
+        } else if (step === 2) {
+          flowTwo.classList.add(&#x27;is-active&#x27;);
+          mode.textContent = &#x27;2단계 · 탄소발자국 측정&#x27;;
+        } else if (step === 3) {
+          flowThree.classList.add(&#x27;is-active&#x27;);
+          mode.textContent = &#x27;3단계 · 열 갇힘 관찰&#x27;;
+        } else {
+          flowFour.classList.add(&#x27;is-active&#x27;);
+          mode.textContent = &#x27;4단계 · 해수면 상승&#x27;;
+        }
+      }
+
+      function summarizeChoices() {
+        return blocks.map((block) =&gt; {
+          const item = getChoice(block.dataset.block);
+          return item ? item.dataset.label : &#x27;&#x27;;
+        }).filter(Boolean);
+      }
+
+      function renderSolarPhotons() {
+        solarPhotons.innerHTML = &#x27;&#x27;;
+        const ids = [&#x27;ccg-solar-path-1&#x27;, &#x27;ccg-solar-path-2&#x27;, &#x27;ccg-solar-path-3&#x27;, &#x27;ccg-solar-path-4&#x27;, &#x27;ccg-solar-path-5&#x27;];
+        ids.forEach((pathId, index) =&gt; {
+          const circle = document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;, &#x27;circle&#x27;);
+          circle.setAttribute(&#x27;class&#x27;, &#x27;solar-photon&#x27;);
+          circle.setAttribute(&#x27;r&#x27;, index % 2 === 0 ? &#x27;5&#x27; : &#x27;4&#x27;);
+          const animate = document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;, &#x27;animateMotion&#x27;);
+          animate.setAttribute(&#x27;dur&#x27;, (3.1 + index * .35) + &#x27;s&#x27;);
+          animate.setAttribute(&#x27;begin&#x27;, (-index * .6) + &#x27;s&#x27;);
+          animate.setAttribute(&#x27;repeatCount&#x27;, &#x27;indefinite&#x27;);
+          animate.setAttribute(&#x27;rotate&#x27;, &#x27;auto&#x27;);
+          const mpath = document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;, &#x27;mpath&#x27;);
+          mpath.setAttribute(&#x27;href&#x27;, &#x27;#&#x27; + pathId);
+          animate.appendChild(mpath);
+          circle.appendChild(animate);
+          solarPhotons.appendChild(circle);
+        });
+      }
+
+      function renderParticles(score) {
+        particles.innerHTML = &#x27;&#x27;;
+        const total = 4 + score * 2;
+        const positions = [
+          [95, 185], [145, 205], [195, 185], [245, 215], [295, 190], [345, 225],
+          [395, 185], [445, 215], [495, 190], [545, 225], [595, 185], [645, 210],
+          [120, 235], [170, 220], [220, 240], [270, 230], [320, 245], [370, 220],
+          [420, 240], [470, 230], [520, 245], [570, 220], [620, 240], [145, 195],
+          [245, 200], [350, 205], [455, 200], [560, 205]
+        ];
+        for (let index = 0; index &lt; total; index += 1) {
+          const circle = document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;, &#x27;circle&#x27;);
+          circle.setAttribute(&#x27;class&#x27;, &#x27;particle&#x27;);
+          circle.setAttribute(&#x27;cx&#x27;, positions[index][0]);
+          circle.setAttribute(&#x27;cy&#x27;, positions[index][1]);
+          circle.setAttribute(&#x27;r&#x27;, index % 3 === 0 ? &#x27;8&#x27; : &#x27;6&#x27;);
+          circle.style.animationDelay = (-index * .13) + &#x27;s&#x27;;
+          particles.appendChild(circle);
+        }
+      }
+
+      function renderHeatPaths(score) {
+        heatPaths.innerHTML = &#x27;&#x27;;
+        heatPhotons.innerHTML = &#x27;&#x27;;
+        const upPaths = [
+          &#x27;M260 370 C246 328 251 287 276 238&#x27;,
+          &#x27;M330 370 C315 321 332 279 346 231&#x27;,
+          &#x27;M399 370 C416 321 402 278 420 232&#x27;,
+          &#x27;M470 370 C492 326 481 284 493 239&#x27;
+        ];
+        const bouncePaths = [
+          &#x27;M276 238 C271 274 286 319 303 370&#x27;,
+          &#x27;M346 231 C340 275 359 320 374 370&#x27;,
+          &#x27;M420 232 C416 274 432 318 447 370&#x27;,
+          &#x27;M493 239 C486 276 502 322 520 370&#x27;
+        ];
+        const escapePaths = [
+          &#x27;M260 370 C246 328 251 287 276 238 C288 210 292 178 304 142&#x27;,
+          &#x27;M399 370 C416 321 402 278 420 232 C431 198 438 164 448 127&#x27;
+        ];
+        upPaths.forEach((d, index) =&gt; {
+          const path = document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;, &#x27;path&#x27;);
+          path.setAttribute(&#x27;class&#x27;, &#x27;heat-path&#x27;);
+          path.setAttribute(&#x27;d&#x27;, d);
+          heatPaths.appendChild(path);
+          addMovingPhoton(path, 2.7 + index * .3, -index * .45, false);
+        });
+        const bounceCount = Math.max(0, Math.min(4, Math.ceil(score / 3)));
+        bouncePaths.slice(0, bounceCount).forEach((d, index) =&gt; {
+          const path = document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;, &#x27;path&#x27;);
+          path.setAttribute(&#x27;class&#x27;, &#x27;heat-path bounce&#x27;);
+          path.setAttribute(&#x27;marker-end&#x27;, &#x27;url(#ccg-arrow-red)&#x27;);
+          path.setAttribute(&#x27;d&#x27;, d);
+          heatPaths.appendChild(path);
+          addMovingPhoton(path, 2.5 + index * .3, -.9 - index * .38, true);
+        });
+        const escapeCount = Math.max(1, 4 - bounceCount);
+        escapePaths.slice(0, escapeCount).forEach((d, index) =&gt; {
+          const path = document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;, &#x27;path&#x27;);
+          path.setAttribute(&#x27;class&#x27;, &#x27;heat-path escape&#x27;);
+          path.setAttribute(&#x27;marker-end&#x27;, &#x27;url(#ccg-arrow-red)&#x27;);
+          path.setAttribute(&#x27;d&#x27;, d);
+          heatPaths.appendChild(path);
+        });
+      }
+
+      function addMovingPhoton(path, duration, begin, bounce) {
+        const circle = document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;, &#x27;circle&#x27;);
+        circle.setAttribute(&#x27;class&#x27;, &#x27;heat-photon&#x27;);
+        circle.setAttribute(&#x27;r&#x27;, bounce ? &#x27;5&#x27; : &#x27;4&#x27;);
+        const animate = document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;, &#x27;animateMotion&#x27;);
+        animate.setAttribute(&#x27;dur&#x27;, duration + &#x27;s&#x27;);
+        animate.setAttribute(&#x27;begin&#x27;, begin + &#x27;s&#x27;);
+        animate.setAttribute(&#x27;repeatCount&#x27;, &#x27;indefinite&#x27;);
+        animate.setAttribute(&#x27;rotate&#x27;, &#x27;auto&#x27;);
+        path.id = &#x27;ccg-heat-&#x27; + Math.random().toString(36).slice(2);
+        const mpath = document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;, &#x27;mpath&#x27;);
+        mpath.setAttribute(&#x27;href&#x27;, &#x27;#&#x27; + path.id);
+        animate.appendChild(mpath);
+        circle.appendChild(animate);
+        heatPhotons.appendChild(circle);
+      }
+
+      function updateSimulation(score) {
+        const layerPercent = Math.round(18 + score / 12 * 82);
+        const layerHeight = 82 + score * 7;
+        const layerY = 249 - layerHeight;
+        const trapped = Math.round(score / 2);
+        carbon = score;
+        simScore.textContent = score + &#x27;/12&#x27;;
+        layerValue.textContent = layerPercent + &#x27;%&#x27;;
+        heatValue.textContent = trapped + &#x27;/6&#x27;;
+        layer.setAttribute(&#x27;y&#x27;, String(layerY));
+        layer.setAttribute(&#x27;height&#x27;, String(layerHeight));
+        layerGlow.setAttribute(&#x27;y&#x27;, String(layerY - 8));
+        layerGlow.setAttribute(&#x27;height&#x27;, String(layerHeight + 16));
+        const labelY = layerY + 27;
+        root.querySelector(&#x27;#ccg-layer-label&#x27;).setAttribute(&#x27;y&#x27;, String(labelY));
+        root.querySelector(&#x27;#ccg-layer-caption&#x27;).setAttribute(&#x27;y&#x27;, String(labelY + 21));
+        renderParticles(score);
+        renderHeatPaths(score);
+        if (score === 0) {
+          callout.textContent = &#x27;열이 올라가요&#x27;;
+          calloutSub.textContent = &#x27;대부분 우주로 빠져나가요&#x27;;
+        } else if (score &lt; 6) {
+          callout.textContent = &#x27;입자가 열을 만나요&#x27;;
+          calloutSub.textContent = &#x27;일부 열이 다시 내려와요&#x27;;
+        } else {
+          callout.textContent = &#x27;입자가 많아졌어요&#x27;;
+          calloutSub.textContent = &#x27;더 많은 열이 갇혀요&#x27;;
+        }
+      }
+
+      function updateSeaLevel(score) {
+        const risePx = Math.round(score / 12 * 110);
+        const surfaceY = 270 - risePx;
+        seaScore.textContent = score + &#x27;/12&#x27;;
+        seaValue.textContent = score + &#x27;/12칸&#x27;;
+        ocean.setAttribute(&#x27;y&#x27;, String(surfaceY));
+        ocean.setAttribute(&#x27;height&#x27;, String(360 - surfaceY));
+        seaWave.setAttribute(&#x27;d&#x27;, &#x27;M0 &#x27; + surfaceY + &#x27; C70 &#x27; + (surfaceY - 13) + &#x27; 130 &#x27; + (surfaceY + 13) + &#x27; 200 &#x27; + surfaceY + &#x27; S340 &#x27; + (surfaceY - 13) + &#x27; 410 &#x27; + surfaceY + &#x27; S550 &#x27; + (surfaceY + 13) + &#x27; 620 &#x27; + surfaceY + &#x27; S690 &#x27; + (surfaceY - 13) + &#x27; 720 &#x27; + surfaceY);
+        seaLine.setAttribute(&#x27;y1&#x27;, String(surfaceY));
+        seaLine.setAttribute(&#x27;y2&#x27;, String(surfaceY));
+        seaRiseLabel.setAttribute(&#x27;y&#x27;, String(Math.max(44, surfaceY - 12)));
+        seaRiseLabel.textContent = &#x27;+&#x27; + score + &#x27;칸&#x27;;
+        seaWave.style.transform = &#x27;translateY(0)&#x27;;
+        window.setTimeout(() =&gt; {
+          seaWave.style.transform = &#x27;translateY(2px)&#x27;;
+        }, 80);
+      }
+
+      choices.forEach((button) =&gt; {
+        button.addEventListener(&#x27;click&#x27;, () =&gt; {
+          chosen[button.dataset.key] = button.dataset.label;
+          updateSelection();
+        });
+      });
+
+      confirmButton.addEventListener(&#x27;click&#x27;, () =&gt; {
+        carbon = Object.keys(chosen).reduce((sum, key) =&gt; {
+          const button = getChoice(key);
+          return sum + Number(button ? button.dataset.score : 0);
+        }, 0);
+        scoreEl.textContent = String(carbon);
+        scoreFill.style.width = Math.round(carbon / 12 * 100) + &#x27;%&#x27;;
+        const labels = summarizeChoices();
+        resultMessage.textContent = &#x27;오늘은 &#x27; + labels.slice(0, 3).join(&#x27;, &#x27;) + &#x27; 등의 선택으로 &#x27; + carbon + &#x27;/12 만큼 표시됐어요. 이제 공기층 속 열의 움직임을 관찰해 보세요.&#x27;;
+        result.hidden = false;
+        simulation.hidden = false;
+        updateFlow(2);
+        updateSimulation(carbon);
+        window.setTimeout(() =&gt; simulation.scrollIntoView({ behavior: &#x27;smooth&#x27;, block: &#x27;start&#x27; }), 40);
+      });
+
+      showSim.addEventListener(&#x27;click&#x27;, () =&gt; {
+        simulation.hidden = false;
+        updateFlow(3);
+        simulation.scrollIntoView({ behavior: &#x27;smooth&#x27;, block: &#x27;start&#x27; });
+      });
+
+      showSea.addEventListener(&#x27;click&#x27;, () =&gt; {
+        seaLevel.hidden = false;
+        updateSeaLevel(carbon);
+        updateFlow(4);
+        window.setTimeout(() =&gt; seaLevel.scrollIntoView({ behavior: &#x27;smooth&#x27;, block: &#x27;start&#x27; }), 40);
+      });
+
+      function resetChoices() {
+        chosen = {};
+        carbon = 0;
+        result.hidden = true;
+        simulation.hidden = true;
+        seaLevel.hidden = true;
+        updateFlow(1);
+        updateSelection();
+        window.scrollTo({ top: 0, behavior: &#x27;smooth&#x27; });
+      }
+
+      repick.addEventListener(&#x27;click&#x27;, resetChoices);
+      replayButtons.forEach((button) =&gt; button.addEventListener(&#x27;click&#x27;, () =&gt; {
+        if (!simulation.hidden) {
+          updateSimulation(carbon);
+          updateFlow(3);
+        }
+      }));
+      seaReplay.addEventListener(&#x27;click&#x27;, () =&gt; {
+        if (!seaLevel.hidden) updateSeaLevel(carbon);
+      });
+      updateSelection();
+      renderSolarPhotons();
+    })();
+  &lt;/script&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</body>
+</html>
